@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { UserRole, JobTitle, TaskLog, TASKS_BY_ROLE } from './types';
 import { Dashboard } from './components/Dashboard';
-import { supabase, isSupabaseConfigured } from './services/supabase';
+import { supabase, isSupabaseConfigured } from './supabaseClient';
 import { 
   ClipboardList, 
   LogOut, 
