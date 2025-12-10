@@ -11,7 +11,8 @@ export default defineConfig(({ mode }) => {
     base: './', // Garante caminhos relativos para hospedagem em subpastas
     define: {
       // Isso garante que process.env.API_KEY funcione no código do navegador após o build
-      'process.env.API_KEY': JSON.stringify(env.API_KEY)
+      // Usa string vazia se undefined para evitar erro de JSON.stringify
+      'process.env.API_KEY': JSON.stringify(env.API_KEY || '')
     },
     build: {
       outDir: 'dist',

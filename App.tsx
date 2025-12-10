@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { UserRole, JobTitle, TaskLog, TASKS_BY_ROLE } from './types';
-import { Dashboard } from './components/Dashboard';
+// Agora importamos do mesmo nível (raiz), sem pasta components
+import { Dashboard } from './Dashboard';
 import { supabase, isSupabaseConfigured } from './supabaseClient';
 import { 
   ClipboardList, 
