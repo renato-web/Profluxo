@@ -151,15 +151,47 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, onRefresh, onDelete 
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50"><tr><th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th><th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Colaborador</th><th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Função</th><th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarefas</th><th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th></tr></thead>
+              <thead className="bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Colaborador</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Função</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarefas</th>
+                  <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                </tr>
+              </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {sortedData.map((log) => (
                   <tr key={log.id} className="hover:bg-gray-50 group">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{formatDateAdjusted(log.date)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap"><div className="text-sm font-medium text-gray-900">{log.user}</div></td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">{log.role}</span></td>
-                    <td className="px-6 py-4 text-sm text-gray-500"><div className="flex flex-col gap-1"><span className="text-xs font-bold text-gray-700">{log.tasks.length} Entregas:</span><ul className="list-disc pl-4 space-y-0.5">{log.tasks.slice(0, 3).map((t, i) => (<li key={i} className="text-xs">{t}</li>))}{log.tasks.length > 3 && <li className="text-xs text-gray-400 italic">+{log.tasks.length - 3} outras</li>}</ul></div></td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"><button onClick={() => onDelete(log.id)} className="text-gray-400 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-red-50" title="Excluir este registro permanentemente"><Trash2 className="w-4 h-4" /></button></td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm font-medium text-gray-900">{log.user}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        {log.role}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-500">
+                      <div className="flex flex-col gap-1">
+                          <span className="text-xs font-bold text-gray-700">{log.tasks.length} Entregas:</span>
+                          <ul className="list-disc pl-4 space-y-0.5">
+                            {log.tasks.slice(0, 3).map((t, i) => (
+                              <li key={i} className="text-xs">{t}</li>
+                            ))}
+                            {log.tasks.length > 3 && <li className="text-xs text-gray-400 italic">+{log.tasks.length - 3} outras</li>}
+                          </ul>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <button 
+                        onClick={() => onDelete(log.id)}
+                        className="text-gray-400 hover:text-red-600 transition-colors p-2 rounded-full hover:bg-red-50"
+                        title="Excluir este registro permanentemente"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
