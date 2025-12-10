@@ -1,0 +1,17 @@
+{
+  "name": "ProFluxo UNINTA",
+  "short_name": "ProFluxo",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#991b1b",
+  "description": "Sistema de Gestão de Produtividade Marketing EaD",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/10605/10605973.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
